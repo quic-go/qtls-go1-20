@@ -631,6 +631,8 @@ func cipherSuiteByID(id uint16) *cipherSuite {
 }
 
 func mutualCipherSuiteTLS13(have []uint16, want uint16) *cipherSuiteTLS13 {
+	fmt.Println("have:", have)
+	fmt.Println("want:", want)
 	for _, id := range have {
 		if id == want {
 			return cipherSuiteTLS13ByID(id)
@@ -641,6 +643,7 @@ func mutualCipherSuiteTLS13(have []uint16, want uint16) *cipherSuiteTLS13 {
 
 func cipherSuiteTLS13ByID(id uint16) *cipherSuiteTLS13 {
 	for _, cipherSuite := range cipherSuitesTLS13 {
+		fmt.Println("checking", cipherSuite.id)
 		if cipherSuite.id == id {
 			return cipherSuite
 		}
